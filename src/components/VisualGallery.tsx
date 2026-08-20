@@ -2,6 +2,8 @@ import React from 'react';
 import { Blocks, Bot, ExternalLink, Flag, Trophy, Wrench } from 'lucide-react';
 import { motion } from 'motion/react';
 
+const IMAGE_FALLBACK = '/images/robotics-fallback.svg';
+
 const competitionItems = [
   {
     title: 'Robot Game — FIRST LEGO League',
@@ -34,6 +36,14 @@ const competitionItems = [
     position: 'object-center',
   },
 ];
+
+const useFallbackImage = (event: React.SyntheticEvent<HTMLImageElement>) => {
+  const image = event.currentTarget;
+  if (image.dataset.fallbackApplied === 'true') return;
+
+  image.dataset.fallbackApplied = 'true';
+  image.src = IMAGE_FALLBACK;
+};
 
 export const VisualGallery: React.FC = () => {
   return (
@@ -75,7 +85,9 @@ export const VisualGallery: React.FC = () => {
                   src={item.image}
                   alt={`Competição ${item.title} — imagem oficial da FIRST`}
                   loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
+                  onError={useFallbackImage}
                   className={`absolute inset-0 h-full w-full object-cover ${item.position} transition-transform duration-700 group-hover:scale-[1.035]`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/5" />
