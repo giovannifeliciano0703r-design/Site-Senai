@@ -5,18 +5,18 @@ import { motion } from 'motion/react';
 const teams = [
   {
     name: 'Federal Force',
-    number: 'FRC 9484',
-    instagram: 'https://www.instagram.com/frc9484?igsi=MWVuejdmazdkazEwMw%3D%3D',
-    handle: '@frc9484',
+    number: 'FRC 10466',
+    instagram: 'https://www.instagram.com/frc10466?igsi=MTgybDF2M2Zydnlzeg%3D%3D',
+    handle: '@frc10466',
     photo: '/teams/federal-force.jpg',
     description:
       'Equipe de robótica do SENAI que participa da FIRST Robotics Competition, unindo engenharia, programação, estratégia e trabalho em equipe.',
   },
   {
-    name: 'Robots District',
-    number: 'FRC 10466',
-    instagram: 'https://www.instagram.com/frc10466?igsi=MTgybDF2M2Zydnlzeg%3D%3D',
-    handle: '@frc10466',
+    name: "Robot's District",
+    number: 'FRC 9484',
+    instagram: 'https://www.instagram.com/frc9484?igsi=MWVuejdmazdkazEwMw%3D%3D',
+    handle: '@frc9484',
     photo: '/teams/robots-district.jpg',
     description:
       'Equipe de robótica do SENAI voltada aos desafios da FIRST Robotics Competition e ao desenvolvimento de soluções técnicas em equipe.',
@@ -39,7 +39,7 @@ export const Teams: React.FC = () => {
             Conheça quem transforma projeto em competição
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg">
-            Federal Force e Robots District representam o SENAI no universo da FIRST Robotics Competition.
+            Federal Force e Robot's District representam o SENAI no universo da FIRST Robotics Competition.
           </p>
         </div>
 
