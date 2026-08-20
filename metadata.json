@@ -1,0 +1,6 @@
+{
+  "name": "FIRST + SENAI: Modalidades de Robótica",
+  "description": "Site educacional moderno e responsivo sobre os programas de robótica da FIRST (FLL, FTC e FRC) em parceria com o SENAI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
