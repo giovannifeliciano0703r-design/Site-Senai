@@ -1,6 +1,6 @@
-import React from 'react';
-import { Bot, Boxes, Check, Cpu, Users, Wrench } from 'lucide-react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { Bot, Boxes, Check, ChevronDown, Cpu, Users, Wrench } from 'lucide-react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { MODALITIES } from '../data/roboticsData';
 
 const getIcon = (acronym: string) => {
@@ -10,6 +10,13 @@ const getIcon = (acronym: string) => {
 };
 
 export const Modalities: React.FC = () => {
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const shouldReduceMotion = useReducedMotion();
+
+  const toggleExpanded = (id: string) => {
+    setExpanded((current) => ({ ...current, [id]: !current[id] }));
+  };
+
   return (
     <section id="modalidades" className="relative py-24 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -23,8 +30,10 @@ export const Modalities: React.FC = () => {
               Três níveis, uma mesma cultura de inovação
             </h2>
           </div>
+
           <p className="max-w-2xl text-base leading-7 text-slate-400 lg:justify-self-end">
-            As modalidades evoluem em complexidade, mas compartilham a mesma base: aprender fazendo, resolver problemas reais e trabalhar em equipe.
+            As modalidades evoluem em complexidade, mas compartilham a mesma base: aprender fazendo,
+            resolver problemas reais e trabalhar em equipe.
           </p>
         </div>
 
@@ -32,6 +41,8 @@ export const Modalities: React.FC = () => {
           {MODALITIES.map((modality, index) => {
             const Icon = getIcon(modality.acronym);
             const highlighted = modality.acronym === 'FRC';
+            const isExpanded = Boolean(expanded[modality.id]);
+            const panelId = `modality-detail-${modality.id}`;
 
             return (
               <motion.article
@@ -39,67 +50,122 @@ export const Modalities: React.FC = () => {
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className={`relative flex h-full flex-col rounded-3xl border p-6 sm:p-7 ${
+                transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : index * 0.08 }}
+                className={`relative flex h-full flex-col overflow-hidden rounded-3xl border transition-colors ${
                   highlighted
                     ? 'border-blue-500/40 bg-gradient-to-b from-blue-500/10 to-slate-900/80 shadow-xl shadow-blue-950/25'
-                    : 'border-slate-800 bg-slate-900/70'
+                    : 'border-slate-800 bg-slate-900/70 hover:border-slate-700'
                 }`}
               >
-                {highlighted && (
-                  <div className="absolute right-5 top-5 rounded-full border border-blue-400/25 bg-blue-500/10 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-blue-300">
-                    Destaque
-                  </div>
-                )}
-
-                <div className="flex items-center gap-3">
-                  <div className={`flex h-11 w-11 items-center justify-center rounded-xl border ${
-                    highlighted
-                      ? 'border-blue-500/30 bg-blue-500/10 text-blue-300'
-                      : 'border-slate-800 bg-slate-950 text-slate-400'
-                  }`}>
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Etapa 0{index + 1}</p>
-                    <p className="font-mono-tech text-xl font-bold text-white">{modality.acronym}</p>
-                  </div>
-                </div>
-
-                <div className="mt-6">
-                  <h3 className="text-xl font-bold leading-snug text-white">{modality.name}</h3>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-500">
-                    {modality.ageRange}
-                  </p>
-                  <p className="mt-4 text-sm leading-6 text-slate-300">{modality.shortDescription}</p>
-                </div>
-
-                <div className="mt-6 border-t border-slate-800 pt-5">
-                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">
-                    Principais características
-                  </p>
-                  <ul className="space-y-2.5">
-                    {modality.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2.5 text-sm text-slate-300">
-                        <Check className={`mt-0.5 h-4 w-4 shrink-0 ${highlighted ? 'text-blue-400' : 'text-slate-500'}`} aria-hidden="true" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto pt-6">
-                  {modality.allianceNote ? (
-                    <div className="flex gap-2.5 rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 text-xs leading-5 text-blue-100/80">
-                      <Users className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" aria-hidden="true" />
-                      <span>{modality.allianceNote}</span>
-                    </div>
-                  ) : (
-                    <div className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-600">
-                      {modality.badge}
+                <div className="p-6 sm:p-7">
+                  {highlighted && (
+                    <div className="absolute right-5 top-5 rounded-full border border-blue-400/25 bg-blue-500/10 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-blue-300">
+                      Destaque
                     </div>
                   )}
+
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center rounded-xl border ${
+                        highlighted
+                          ? 'border-blue-500/30 bg-blue-500/10 text-blue-300'
+                          : 'border-slate-800 bg-slate-950 text-slate-400'
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                        Etapa 0{index + 1}
+                      </p>
+                      <p className="font-mono-tech text-xl font-bold text-white">{modality.acronym}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6">
+                    <h3 className="text-xl font-bold leading-snug text-white">{modality.name}</h3>
+                    <p className="mt-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-500">
+                      {modality.ageRange}
+                    </p>
+                    <p className="mt-4 text-sm leading-6 text-slate-300">{modality.shortDescription}</p>
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-800 pt-5">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">
+                      {modality.badge}
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => toggleExpanded(modality.id)}
+                      aria-expanded={isExpanded}
+                      aria-controls={panelId}
+                      className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-slate-800 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-300 transition-colors hover:border-blue-500/30 hover:bg-slate-900 hover:text-white"
+                    >
+                      <span>{isExpanded ? 'Ver menos' : 'Ver detalhes'}</span>
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform duration-300 ${
+                          isExpanded ? 'rotate-180 text-blue-400' : 'text-slate-500'
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
                 </div>
+
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <motion.div
+                      id={panelId}
+                      key="details"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{
+                        duration: shouldReduceMotion ? 0 : 0.3,
+                        ease: [0.4, 0, 0.2, 1],
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <div className="border-t border-slate-800 bg-slate-950/35 px-6 pb-6 pt-5 sm:px-7 sm:pb-7">
+                        <div
+                          className={`rounded-2xl border border-slate-800 bg-gradient-to-br ${modality.accentColor} p-4`}
+                        >
+                          <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">
+                            Em poucas palavras
+                          </p>
+                          <p className="mt-1.5 text-sm font-medium leading-6 text-slate-100">{modality.tagline}</p>
+                        </div>
+
+                        <div className="mt-5">
+                          <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">
+                            Principais características
+                          </p>
+                          <ul className="space-y-2.5">
+                            {modality.features.map((feature) => (
+                              <li key={feature} className="flex items-start gap-2.5 text-sm text-slate-300">
+                                <Check
+                                  className={`mt-0.5 h-4 w-4 shrink-0 ${
+                                    highlighted ? 'text-blue-400' : 'text-slate-500'
+                                  }`}
+                                  aria-hidden="true"
+                                />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {modality.allianceNote && (
+                          <div className="mt-5 flex gap-2.5 rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 text-xs leading-5 text-blue-100/80">
+                            <Users className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" aria-hidden="true" />
+                            <span>{modality.allianceNote}</span>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.article>
             );
           })}
