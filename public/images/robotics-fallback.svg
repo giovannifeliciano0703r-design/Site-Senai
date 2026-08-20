@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Imagem de robótica indisponível</title>
+  <desc id="desc">Ilustração de fallback usada quando uma foto externa não pode ser carregada.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020617"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0" stop-color="#2563eb" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect width="1200" height="760" fill="url(#glow)"/>
+  <g fill="none" stroke="#334155" stroke-width="2" opacity=".45">
+    <path d="M0 120h1200M0 240h1200M0 360h1200M0 480h1200M0 600h1200"/>
+    <path d="M150 0v760M300 0v760M450 0v760M600 0v760M750 0v760M900 0v760M1050 0v760"/>
+  </g>
+  <g transform="translate(500 205)" fill="none" stroke="#60a5fa" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="0" y="70" width="200" height="150" rx="28"/>
+    <path d="M100 70V20M72 20h56"/>
+    <circle cx="62" cy="140" r="10" fill="#60a5fa" stroke="none"/>
+    <circle cx="138" cy="140" r="10" fill="#60a5fa" stroke="none"/>
+    <path d="M58 184h84M0 132h-38M238 132h-38M54 220v38M146 220v38"/>
+  </g>
+  <text x="600" y="535" text-anchor="middle" fill="#f8fafc" font-family="Arial, sans-serif" font-size="40" font-weight="700">Robótica FIRST</text>
+  <text x="600" y="585" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="24">Imagem temporariamente indisponível</text>
+</svg>
