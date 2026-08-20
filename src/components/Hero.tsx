@@ -9,6 +9,16 @@ export const Hero: React.FC = () => {
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-16 sm:px-6 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0">
+        <motion.div
+          animate={{ y: [0, -18, 0], x: [0, 10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute left-[8%] top-[22%] h-2.5 w-2.5 rounded-full bg-blue-400/70 shadow-[0_0_32px_rgba(96,165,250,0.8)]"
+        />
+        <motion.div
+          animate={{ y: [0, 16, 0], x: [0, -8, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute bottom-[24%] right-[10%] h-2 w-2 rounded-full bg-indigo-300/60 shadow-[0_0_28px_rgba(165,180,252,0.7)]"
+        />
         <div className="absolute left-1/2 top-1/3 h-[30rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/10 blur-3xl" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.035)_1px,transparent_1px)] [background-size:52px_52px] [mask-image:linear-gradient(to_bottom,black,transparent_88%)]" />
       </div>
@@ -48,9 +58,13 @@ export const Hero: React.FC = () => {
           </a>
         </div>
 
-        <div className="mt-16 text-xs font-medium uppercase tracking-[0.18em] text-slate-600">
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          className="mt-16 text-xs font-medium uppercase tracking-[0.18em] text-slate-600"
+        >
           Role para conhecer
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );
