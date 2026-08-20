@@ -106,8 +106,8 @@ export const Hero: React.FC = () => {
                       key={item.acronym}
                       className={`rounded-2xl border p-4 transition-colors ${
                         highlighted
-                          ? 'border-blue-500/40 bg-blue-500/8'
-                          : 'border-slate-800 bg-slate-950/55'
+                          ? 'border-blue-500/40 bg-blue-500/10'
+                          : 'border-slate-800 bg-slate-950/60'
                       }`}
                     >
                       <div className="flex items-start gap-4">
