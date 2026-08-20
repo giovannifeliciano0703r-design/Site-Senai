@@ -1,124 +1,98 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, X, Cpu } from 'lucide-react';
+
+const navLinks = [
+  { label: 'Início', href: '#inicio' },
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Modalidades', href: '#modalidades' },
+  { label: 'Habilidades', href: '#valores' },
+];
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Início', href: '#inicio' },
-    { label: 'Sobre a FIRST', href: '#sobre' },
-    { label: 'Modalidades', href: '#modalidades' },
-    { label: 'Comparação', href: '#comparacao' },
-    { label: 'Valores', href: '#valores' },
-    { label: 'SENAI', href: '#senai' },
-  ];
-
   return (
     <header
-      id="main-header"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
         isScrolled
-          ? 'bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-lg shadow-black/20 py-3.5'
-          : 'bg-slate-950/60 backdrop-blur-sm border-b border-slate-800/40 py-5'
+          ? 'border-slate-800/80 bg-slate-950/92 py-3 shadow-lg shadow-black/10 backdrop-blur-xl'
+          : 'border-transparent bg-slate-950/45 py-4 backdrop-blur-md'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand / Logo */}
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a
-          id="header-brand"
           href="#inicio"
-          className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg p-1"
+          className="group flex items-center gap-3 rounded-xl"
+          aria-label="Voltar ao início"
         >
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200 border border-blue-400/30">
-            <Cpu className="w-5 h-5" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-300 transition-colors group-hover:bg-blue-500/15">
+            <Cpu className="h-5 w-5" aria-hidden="true" />
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1.5">
-              <span className="font-extrabold tracking-tight text-white text-lg font-mono-tech">
-                FIRST
-              </span>
-              <span className="text-red-500 font-bold text-base">+</span>
-              <span className="font-extrabold tracking-tight text-blue-400 text-lg font-mono-tech">
-                SENAI
-              </span>
+          <div>
+            <div className="flex items-center gap-2 text-sm font-extrabold tracking-tight text-white sm:text-base">
+              <span>FIRST</span>
+              <span className="h-4 w-px bg-slate-700" aria-hidden="true" />
+              <span className="text-blue-400">SENAI</span>
             </div>
-            <span className="text-[10px] uppercase tracking-wider text-slate-400 font-medium">
-              Robótica Estudantil
-            </span>
+            <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+              Robótica e educação
+            </p>
           </div>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav id="desktop-navigation" className="hidden md:flex items-center gap-1 lg:gap-2">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Navegação principal">
           {navLinks.map((link) => (
             <a
               key={link.href}
-              id={`nav-${link.href.replace('#', '')}`}
               href={link.href}
-              className="px-3.5 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors duration-200"
+              className="rounded-lg px-3 py-2 text-sm font-semibold text-slate-300 transition-colors hover:bg-white/5 hover:text-white"
             >
               {link.label}
             </a>
           ))}
           <a
-            id="nav-cta-modalities"
             href="#modalidades"
-            className="ml-3 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg transition-all duration-200 shadow-sm shadow-blue-600/30 hover:shadow-blue-500/40 active:scale-95"
+            className="ml-3 rounded-lg bg-white px-4 py-2 text-sm font-bold text-slate-950 transition-all hover:-translate-y-0.5 hover:bg-blue-50"
           >
-            Explorar
+            Explorar modalidades
           </a>
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
-          id="mobile-menu-toggle"
           type="button"
-          aria-label="Abrir menu de navegação"
+          aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={mobileMenuOpen}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors"
+          onClick={() => setMobileMenuOpen((open) => !open)}
+          className="rounded-lg border border-slate-800 bg-slate-900/80 p-2 text-slate-200 md:hidden"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div
-          id="mobile-nav-menu"
-          className="md:hidden bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 px-4 pt-3 pb-6 space-y-1 shadow-2xl transition-all"
+        <nav
+          className="mx-4 mt-3 rounded-2xl border border-slate-800 bg-slate-950/95 p-2 shadow-2xl shadow-black/30 backdrop-blur-xl md:hidden"
+          aria-label="Navegação móvel"
         >
           {navLinks.map((link) => (
             <a
               key={link.href}
-              id={`mobile-nav-${link.href.replace('#', '')}`}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-4 py-2.5 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800/80 rounded-lg transition-colors"
+              className="block rounded-xl px-4 py-3 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-900"
             >
               {link.label}
             </a>
           ))}
-          <div className="pt-2">
-            <a
-              id="mobile-nav-cta-modalities"
-              href="#modalidades"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-center w-full px-4 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-lg transition-colors shadow-md shadow-blue-600/30"
-            >
-              Conhecer modalidades
-            </a>
-          </div>
-        </div>
+        </nav>
       )}
     </header>
   );
