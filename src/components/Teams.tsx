@@ -6,8 +6,8 @@ const teams = [
   {
     name: 'Federal Force',
     number: 'FRC 10466',
-    instagram: 'https://www.instagram.com/frc10466?igsi=MTgybDF2M2Zydnlzeg%3D%3D',
-    handle: '@frc10466',
+    instagram: 'https://www.instagram.com/frc9484?igsi=MWVuejdmazdkazEwMw%3D%3D',
+    handle: '@frc9484',
     photo: '/teams/federal-force.jpg',
     description:
       'Equipe de robótica do SENAI que participa da FIRST Robotics Competition, unindo engenharia, programação, estratégia e trabalho em equipe.',
@@ -15,8 +15,8 @@ const teams = [
   {
     name: "Robot's District",
     number: 'FRC 9484',
-    instagram: 'https://www.instagram.com/frc9484?igsi=MWVuejdmazdkazEwMw%3D%3D',
-    handle: '@frc9484',
+    instagram: 'https://www.instagram.com/frc10466?igsi=MTgybDF2M2Zydnlzeg%3D%3D',
+    handle: '@frc10466',
     photo: '/teams/robots-district.jpg',
     description:
       'Equipe de robótica do SENAI voltada aos desafios da FIRST Robotics Competition e ao desenvolvimento de soluções técnicas em equipe.',
