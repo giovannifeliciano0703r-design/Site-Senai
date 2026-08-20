@@ -23,8 +23,8 @@ export const Header: React.FC = () => {
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
         isScrolled
-          ? 'border-slate-800/80 bg-slate-950/92 py-3 shadow-lg shadow-black/10 backdrop-blur-xl'
-          : 'border-transparent bg-slate-950/45 py-4 backdrop-blur-md'
+          ? 'border-slate-800/80 bg-slate-950/90 py-3 shadow-lg shadow-black/10 backdrop-blur-xl'
+          : 'border-transparent bg-slate-950/50 py-4 backdrop-blur-md'
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -33,7 +33,7 @@ export const Header: React.FC = () => {
           className="group flex items-center gap-3 rounded-xl"
           aria-label="Voltar ao início"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-300 transition-colors group-hover:bg-blue-500/15">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-300 transition-colors group-hover:bg-blue-500/20">
             <Cpu className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
