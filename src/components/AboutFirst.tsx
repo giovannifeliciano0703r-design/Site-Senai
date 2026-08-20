@@ -22,7 +22,7 @@ const principles = [
 
 export const AboutFirst: React.FC = () => {
   return (
-    <section id="sobre" className="border-y border-slate-800/80 bg-slate-900/35 py-20 lg:py-24">
+    <section id="sobre" className="border-y border-slate-800/80 bg-slate-900/40 py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <motion.div
@@ -51,7 +51,7 @@ export const AboutFirst: React.FC = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.35, delay: index * 0.07 }}
-                  className="flex gap-4 rounded-2xl border border-slate-800 bg-slate-950/45 p-5"
+                  className="flex gap-4 rounded-2xl border border-slate-800 bg-slate-950/50 p-5"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-blue-400">
                     <Icon className="h-5 w-5" aria-hidden="true" />
