@@ -11,6 +11,7 @@ import { Modalities } from './components/Modalities';
 import { Comparison } from './components/Comparison';
 import { Values } from './components/Values';
 import { SenaiFirst } from './components/SenaiFirst';
+import { Teams } from './components/Teams';
 import { Footer } from './components/Footer';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         <Comparison />
         <Values />
         <SenaiFirst />
+        <Teams />
       </main>
       <Footer />
     </div>
