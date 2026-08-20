@@ -7,9 +7,9 @@ import React from 'react';
 import { Hero } from './components/Hero';
 import { AboutFirst } from './components/AboutFirst';
 import { Modalities } from './components/Modalities';
+import { VisualGallery } from './components/VisualGallery';
 import { Comparison } from './components/Comparison';
 import { Values } from './components/Values';
-import { VisualGallery } from './components/VisualGallery';
 import { SenaiFirst } from './components/SenaiFirst';
 import { Teams } from './components/Teams';
 import { Footer } from './components/Footer';
@@ -21,9 +21,9 @@ export default function App() {
         <Hero />
         <AboutFirst />
         <Modalities />
+        <VisualGallery />
         <Comparison />
         <Values />
-        <VisualGallery />
         <SenaiFirst />
         <Teams />
       </main>
