@@ -1,52 +1,50 @@
 import React from 'react';
-import { COMPARISONS } from '../data/roboticsData';
-import { Layers, ArrowRight } from 'lucide-react';
+import { ArrowRight, Layers } from 'lucide-react';
 import { motion } from 'motion/react';
+import { COMPARISONS } from '../data/roboticsData';
 
 export const Comparison: React.FC = () => {
   return (
-    <section id="comparacao" className="py-16 bg-slate-900/40 border-y border-slate-800/80 relative">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-semibold text-slate-300">
-            <Layers className="w-3.5 h-3.5 text-blue-400" />
-            <span>Resumo Rápido</span>
+    <section id="comparacao" className="border-y border-slate-800/80 bg-slate-900/35 py-18 sm:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-950/60 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">
+            <Layers className="h-3.5 w-3.5 text-blue-400" aria-hidden="true" />
+            Comparação rápida
           </div>
-          <h2 id="comparison-heading" className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-            Qual é a diferença?
-          </h2>
-          <p className="text-sm sm:text-base text-slate-300">
-            Uma visão comparativa em segundos para entender a progressão das modalidades.
+          <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">Como as modalidades evoluem?</h2>
+          <p className="mt-3 text-sm leading-6 text-slate-400 sm:text-base">
+            A complexidade aumenta de forma progressiva, acompanhando o desenvolvimento técnico dos estudantes.
           </p>
         </div>
 
-        {/* Quick progression grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {COMPARISONS.map((comp, idx) => (
-            <motion.div
-              key={comp.acronym}
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: idx * 0.1 }}
-              className={`p-5 rounded-xl border flex flex-col justify-between transition-all ${comp.accent}`}
-            >
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono-tech text-2xl font-black text-white">
-                    {comp.acronym}
-                  </span>
-                  <span className="text-2xl">{comp.emoji}</span>
+        <div className="grid gap-4 md:grid-cols-3">
+          {COMPARISONS.map((comp, index) => (
+            <React.Fragment key={comp.acronym}>
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: index * 0.07 }}
+                className={`relative rounded-2xl border p-5 ${
+                  comp.acronym === 'FRC'
+                    ? 'border-blue-500/35 bg-blue-500/7'
+                    : 'border-slate-800 bg-slate-950/45'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-mono-tech text-2xl font-bold text-white">{comp.acronym}</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.12em] text-slate-600">0{index + 1}</span>
                 </div>
-                <div className="text-sm font-semibold text-slate-200 mb-3">
-                  {comp.level}
-                </div>
-              </div>
-
-              <div className="pt-3 border-t border-slate-700/40 text-xs font-bold tracking-wide uppercase text-slate-100">
-                {comp.keywords}
-              </div>
-            </motion.div>
+                <p className="mt-4 text-sm font-bold text-slate-200">{comp.level}</p>
+                <p className="mt-2 text-xs font-semibold uppercase leading-5 tracking-[0.08em] text-slate-500">
+                  {comp.keywords}
+                </p>
+                {index < COMPARISONS.length - 1 && (
+                  <ArrowRight className="absolute -right-5 top-1/2 z-10 hidden h-4 w-4 -translate-y-1/2 text-slate-700 md:block" aria-hidden="true" />
+                )}
+              </motion.div>
+            </React.Fragment>
           ))}
         </div>
       </div>
