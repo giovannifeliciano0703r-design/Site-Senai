@@ -1,8 +1,10 @@
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 export const Hero: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
       id="inicio"
@@ -10,13 +12,13 @@ export const Hero: React.FC = () => {
     >
       <div className="pointer-events-none absolute inset-0">
         <motion.div
-          animate={{ y: [0, -18, 0], x: [0, 10, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          animate={shouldReduceMotion ? undefined : { y: [0, -18, 0], x: [0, 10, 0] }}
+          transition={shouldReduceMotion ? undefined : { duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute left-[8%] top-[22%] h-2.5 w-2.5 rounded-full bg-blue-400/70 shadow-[0_0_32px_rgba(96,165,250,0.8)]"
         />
         <motion.div
-          animate={{ y: [0, 16, 0], x: [0, -8, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          animate={shouldReduceMotion ? undefined : { y: [0, 16, 0], x: [0, -8, 0] }}
+          transition={shouldReduceMotion ? undefined : { duration: 10, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute bottom-[24%] right-[10%] h-2 w-2 rounded-full bg-indigo-300/60 shadow-[0_0_28px_rgba(165,180,252,0.7)]"
         />
         <div className="absolute left-1/2 top-1/3 h-[30rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/10 blur-3xl" />
@@ -24,9 +26,9 @@ export const Hero: React.FC = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 18 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.55 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.55 }}
         className="relative z-10 mx-auto max-w-4xl text-center"
       >
         <div className="mb-8 flex items-center justify-center gap-4 text-sm font-extrabold tracking-tight text-white sm:text-base">
@@ -59,8 +61,8 @@ export const Hero: React.FC = () => {
         </div>
 
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          animate={shouldReduceMotion ? undefined : { y: [0, 6, 0] }}
+          transition={shouldReduceMotion ? undefined : { duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
           className="mt-16 text-xs font-medium uppercase tracking-[0.18em] text-slate-600"
         >
           Role para conhecer
