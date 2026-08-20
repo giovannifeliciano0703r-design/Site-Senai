@@ -2,6 +2,8 @@ import React from 'react';
 import { ArrowUpRight, Instagram, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 
+const IMAGE_FALLBACK = '/images/robotics-fallback.svg';
+
 const teams = [
   {
     name: 'Federal Force',
@@ -26,6 +28,14 @@ const teams = [
       'Equipe de robótica do SENAI voltada aos desafios da FIRST Robotics Competition e ao desenvolvimento de soluções técnicas em equipe.',
   },
 ];
+
+const useFallbackImage = (event: React.SyntheticEvent<HTMLImageElement>) => {
+  const image = event.currentTarget;
+  if (image.dataset.fallbackApplied === 'true') return;
+
+  image.dataset.fallbackApplied = 'true';
+  image.src = IMAGE_FALLBACK;
+};
 
 export const Teams: React.FC = () => {
   return (
@@ -63,6 +73,8 @@ export const Teams: React.FC = () => {
                   alt={`Equipe ${team.name}`}
                   loading="lazy"
                   decoding="async"
+                  referrerPolicy="no-referrer"
+                  onError={useFallbackImage}
                   className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.025]"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
