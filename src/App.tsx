@@ -9,6 +9,7 @@ import { AboutFirst } from './components/AboutFirst';
 import { Modalities } from './components/Modalities';
 import { Comparison } from './components/Comparison';
 import { Values } from './components/Values';
+import { VisualGallery } from './components/VisualGallery';
 import { SenaiFirst } from './components/SenaiFirst';
 import { Teams } from './components/Teams';
 import { Footer } from './components/Footer';
@@ -22,6 +23,7 @@ export default function App() {
         <Modalities />
         <Comparison />
         <Values />
+        <VisualGallery />
         <SenaiFirst />
         <Teams />
       </main>
