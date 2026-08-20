@@ -5,7 +5,7 @@ import { COMPARISONS } from '../data/roboticsData';
 
 export const Comparison: React.FC = () => {
   return (
-    <section id="comparacao" className="border-y border-slate-800/80 bg-slate-900/35 py-18 sm:py-20">
+    <section id="comparacao" className="border-y border-slate-800/80 bg-slate-900/40 py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-950/60 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">
@@ -28,8 +28,8 @@ export const Comparison: React.FC = () => {
                 transition={{ duration: 0.35, delay: index * 0.07 }}
                 className={`relative rounded-2xl border p-5 ${
                   comp.acronym === 'FRC'
-                    ? 'border-blue-500/35 bg-blue-500/7'
-                    : 'border-slate-800 bg-slate-950/45'
+                    ? 'border-blue-500/40 bg-blue-500/10'
+                    : 'border-slate-800 bg-slate-950/50'
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
