@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 
 export const SenaiFirst: React.FC = () => {
   return (
-    <section id="senai" className="border-t border-slate-800/80 bg-slate-900/35 py-20 lg:py-24">
+    <section id="senai" className="border-t border-slate-800/80 bg-slate-900/40 py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -24,7 +24,7 @@ export const SenaiFirst: React.FC = () => {
             </div>
 
             <div className="space-y-3">
-              <div className="flex gap-4 rounded-2xl border border-slate-800 bg-slate-900/55 p-5">
+              <div className="flex gap-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/5 text-red-400">
                   <GraduationCap className="h-5 w-5" aria-hidden="true" />
                 </div>
@@ -34,7 +34,7 @@ export const SenaiFirst: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex gap-4 rounded-2xl border border-slate-800 bg-slate-900/55 p-5">
+              <div className="flex gap-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/5 text-blue-400">
                   <BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />
                 </div>
