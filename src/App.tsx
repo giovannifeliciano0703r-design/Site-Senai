@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutFirst } from './components/AboutFirst';
 import { Modalities } from './components/Modalities';
@@ -17,7 +16,6 @@ import { Footer } from './components/Footer';
 export default function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white">
-      <Header />
       <main className="flex-grow">
         <Hero />
         <AboutFirst />
