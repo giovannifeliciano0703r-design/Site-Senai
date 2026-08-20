@@ -42,8 +42,8 @@ export const Modalities: React.FC = () => {
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 className={`relative flex h-full flex-col rounded-3xl border p-6 sm:p-7 ${
                   highlighted
-                    ? 'border-blue-500/45 bg-gradient-to-b from-blue-500/10 to-slate-900/80 shadow-xl shadow-blue-950/25'
-                    : 'border-slate-800 bg-slate-900/65'
+                    ? 'border-blue-500/40 bg-gradient-to-b from-blue-500/10 to-slate-900/80 shadow-xl shadow-blue-950/25'
+                    : 'border-slate-800 bg-slate-900/70'
                 }`}
               >
                 {highlighted && (
