@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 
 export const Hero: React.FC = () => {
@@ -50,20 +49,10 @@ export const Hero: React.FC = () => {
           Um guia simples sobre as modalidades, competências e equipes que fazem parte desse universo.
         </p>
 
-        <div className="mt-10 flex justify-center">
-          <a
-            href="#sobre"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-slate-950 transition-all hover:-translate-y-0.5 hover:bg-blue-50"
-          >
-            Explorar o conteúdo
-            <ArrowDown className="h-4 w-4" aria-hidden="true" />
-          </a>
-        </div>
-
         <motion.div
           animate={shouldReduceMotion ? undefined : { y: [0, 6, 0] }}
           transition={shouldReduceMotion ? undefined : { duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          className="mt-16 text-xs font-medium uppercase tracking-[0.18em] text-slate-600"
+          className="mt-12 text-xs font-medium uppercase tracking-[0.18em] text-slate-600"
         >
           Role para conhecer
         </motion.div>

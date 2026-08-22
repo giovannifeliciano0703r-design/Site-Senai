@@ -27,20 +27,19 @@ export const Modalities: React.FC = () => {
               Modalidades FIRST
             </div>
             <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
-              Três níveis, uma mesma cultura de inovação
+              Três programas, uma comunidade de robótica
             </h2>
           </div>
 
           <p className="max-w-2xl text-base leading-7 text-slate-400 lg:justify-self-end">
-            As modalidades evoluem em complexidade, mas compartilham a mesma base: aprender fazendo,
-            resolver problemas reais e trabalhar em equipe.
+            A FIRST oferece programas para diferentes idades e séries escolares. Todos promovem
+            colaboração, resolução de problemas e inovação por meio da robótica e da engenharia.
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid items-start gap-6 lg:grid-cols-3">
           {MODALITIES.map((modality, index) => {
             const Icon = getIcon(modality.acronym);
-            const highlighted = modality.acronym === 'FRC';
             const isExpanded = Boolean(expanded[modality.id]);
             const panelId = `modality-detail-${modality.id}`;
 
@@ -51,26 +50,18 @@ export const Modalities: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : index * 0.08 }}
-                className={`relative flex h-full flex-col overflow-hidden rounded-3xl border transition-colors ${
-                  highlighted
-                    ? 'border-blue-500/40 bg-gradient-to-b from-blue-500/10 to-slate-900/80 shadow-xl shadow-blue-950/25'
-                    : 'border-slate-800 bg-slate-900/70 hover:border-slate-700'
-                }`}
+                className="relative flex flex-col overflow-hidden rounded-3xl border border-blue-500/40 bg-gradient-to-b from-blue-500/10 to-slate-900/80 shadow-xl shadow-blue-950/25 transition-colors hover:border-blue-400/60"
               >
-                <div className="p-6 sm:p-7">
-                  {highlighted && (
-                    <div className="absolute right-5 top-5 rounded-full border border-blue-400/25 bg-blue-500/10 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-blue-300">
-                      Destaque
-                    </div>
-                  )}
-
+                <button
+                  type="button"
+                  onClick={() => toggleExpanded(modality.id)}
+                  aria-expanded={isExpanded}
+                  aria-controls={panelId}
+                  className="flex w-full flex-col p-6 text-left sm:p-7 lg:min-h-[342px]"
+                >
                   <div className="flex items-center gap-3">
                     <div
-                      className={`flex h-11 w-11 items-center justify-center rounded-xl border ${
-                        highlighted
-                          ? 'border-blue-500/30 bg-blue-500/10 text-blue-300'
-                          : 'border-slate-800 bg-slate-950 text-slate-400'
-                      }`}
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 text-blue-300"
                     >
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
@@ -90,28 +81,13 @@ export const Modalities: React.FC = () => {
                     <p className="mt-4 text-sm leading-6 text-slate-300">{modality.shortDescription}</p>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-800 pt-5">
+                  <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-800 pt-5 lg:mt-auto">
                     <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-slate-500">
                       {modality.badge}
                     </span>
-
-                    <button
-                      type="button"
-                      onClick={() => toggleExpanded(modality.id)}
-                      aria-expanded={isExpanded}
-                      aria-controls={panelId}
-                      className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-slate-800 bg-slate-950/70 px-3.5 py-2 text-xs font-bold text-slate-300 transition-colors hover:border-blue-500/30 hover:bg-slate-900 hover:text-white"
-                    >
-                      <span>{isExpanded ? 'Ver menos' : 'Ver detalhes'}</span>
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-300 ${
-                          isExpanded ? 'rotate-180 text-blue-400' : 'text-slate-500'
-                        }`}
-                        aria-hidden="true"
-                      />
-                    </button>
+                    <ChevronDown className={`h-5 w-5 shrink-0 transition-transform duration-300 ${isExpanded ? 'rotate-180 text-blue-300' : 'text-slate-500'}`} aria-hidden="true" />
                   </div>
-                </div>
+                </button>
 
                 <AnimatePresence initial={false}>
                   {isExpanded && (
@@ -144,12 +120,7 @@ export const Modalities: React.FC = () => {
                           <ul className="space-y-2.5">
                             {modality.features.map((feature) => (
                               <li key={feature} className="flex items-start gap-2.5 text-sm text-slate-300">
-                                <Check
-                                  className={`mt-0.5 h-4 w-4 shrink-0 ${
-                                    highlighted ? 'text-blue-400' : 'text-slate-500'
-                                  }`}
-                                  aria-hidden="true"
-                                />
+                                <Check className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" aria-hidden="true" />
                                 <span>{feature}</span>
                               </li>
                             ))}
@@ -162,6 +133,7 @@ export const Modalities: React.FC = () => {
                             <span>{modality.allianceNote}</span>
                           </div>
                         )}
+
                       </div>
                     </motion.div>
                   )}

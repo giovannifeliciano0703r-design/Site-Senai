@@ -4,13 +4,13 @@ const partnerLinks = [
   {
     name: 'SENAI',
     href: 'https://www.sistemafibra.org.br/senai/40-noticias/destaques/1836-alunos-do-sesi-e-do-senai-df-vivem-o-sonho-do-mundial-de-robotica',
-    logo: '/logos/senai-logo.svg',
+    logo: '/logos/senai-logo-transparent.png',
     logoClassName: 'h-11 sm:h-12',
   },
   {
     name: 'FIRST',
     href: 'https://www.firstinspires.org/programs/frc/',
-    logo: '/logos/first-logo.svg',
+    logo: '/logos/first-logo-transparent.png',
     logoClassName: 'h-9 sm:h-10',
   },
 ];
@@ -24,7 +24,7 @@ export const Footer: React.FC = () => {
             Conheça as instituições
           </p>
 
-          <div className="mt-5 flex w-full max-w-lg flex-col gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-5 flex w-full max-w-lg items-center justify-center gap-10">
             {partnerLinks.map((partner) => (
               <a
                 key={partner.name}
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 aria-label={`Acessar página do ${partner.name}`}
                 title={`Acessar ${partner.name}`}
-                className="group flex min-h-24 flex-1 items-center justify-center rounded-2xl border border-slate-800 bg-white px-7 py-5 shadow-lg shadow-black/10 transition-all duration-200 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-950/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                className="group inline-flex items-center justify-center rounded-xl p-2 transition-transform duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
               >
                 <img
                   src={partner.logo}

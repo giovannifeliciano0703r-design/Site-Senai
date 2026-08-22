@@ -1,5 +1,7 @@
+export type ModalityId = 'fll' | 'ftc' | 'frc';
+
 export interface Modality {
-  id: string;
+  id: ModalityId;
   name: string;
   acronym: 'FLL' | 'FTC' | 'FRC';
   ageRange: string;
@@ -17,12 +19,4 @@ export interface ValueItem {
   title: string;
   description: string;
   iconName: string;
-}
-
-export interface ComparisonItem {
-  acronym: 'FLL' | 'FTC' | 'FRC';
-  level: string;
-  emoji: string;
-  keywords: string;
-  accent: string;
 }
