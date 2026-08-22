@@ -1,13 +1,13 @@
 import React from 'react';
-import { Code, Lightbulb, Users, Wrench } from 'lucide-react';
+import { Globe2, Lightbulb, Search, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 import { VALUES } from '../data/roboticsData';
 
 const iconMap = {
-  Wrench,
-  Code,
+  Search,
   Users,
   Lightbulb,
+  Globe2,
 } as const;
 
 export const Values: React.FC = () => {
@@ -15,10 +15,10 @@ export const Values: React.FC = () => {
     <section id="valores" className="py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-2xl">
-          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-blue-400">Competências desenvolvidas</p>
-          <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Muito além dos robôs</h2>
+          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-blue-400">Valores essenciais FIRST</p>
+          <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Princípios que orientam a comunidade</h2>
           <p className="mt-4 text-base leading-7 text-slate-400">
-            As competições combinam conhecimento técnico com habilidades que também fazem diferença na escola, na indústria e em projetos profissionais.
+            A FIRST define valores essenciais que incluem descoberta, inovação, impacto, inclusão, trabalho em equipe e diversão.
           </p>
         </div>
 

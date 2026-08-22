@@ -16,10 +16,10 @@ export const SenaiFirst: React.FC = () => {
           <div className="h-1 w-full bg-gradient-to-r from-red-500 via-blue-500 to-blue-400" aria-hidden="true" />
           <div className="grid gap-10 p-7 sm:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div>
-              <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-blue-400">Educação tecnológica</p>
-              <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">SENAI, tecnologia e cultura de engenharia</h2>
+              <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-blue-400">Aprendizado FIRST</p>
+              <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Experiências para escolas e organizações</h2>
               <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300">
-                A formação profissional do SENAI e as experiências de robótica da FIRST aproximam estudantes de projetos práticos, colaboração e desafios semelhantes aos encontrados em ambientes de tecnologia e indústria.
+                Os programas oferecem experiências flexíveis em equipe que promovem colaboração, resolução de problemas e inovação por meio de atividades de robótica e engenharia.
               </p>
             </div>
 
@@ -29,8 +29,8 @@ export const SenaiFirst: React.FC = () => {
                   <GraduationCap className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white">Formação prática</h3>
-                  <p className="mt-1 text-sm leading-6 text-slate-400">Conhecimento aplicado em projetos, protótipos e resolução de problemas.</p>
+                  <h3 className="font-bold text-white">Aprendizado prático</h3>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">Estudantes aplicam STEM em desafios reais, projetando, construindo e resolvendo problemas em equipe.</p>
                 </div>
               </div>
 
@@ -39,8 +39,8 @@ export const SenaiFirst: React.FC = () => {
                   <BriefcaseBusiness className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white">Visão profissional</h3>
-                  <p className="mt-1 text-sm leading-6 text-slate-400">Organização, comunicação, estratégia e responsabilidade em equipe.</p>
+                  <h3 className="font-bold text-white">Aprendizado ligado ao trabalho</h3>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">Os desafios desenvolvem trabalho em equipe e resolução de problemas e ajudam a explorar carreiras e conceitos técnicos.</p>
                 </div>
               </div>
             </div>

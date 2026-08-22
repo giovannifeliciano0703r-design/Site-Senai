@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowUpRight, Instagram, Users } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Instagram, Users } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
+import { SponsorContact } from './SponsorContact';
 
 const IMAGE_FALLBACK = '/images/robotics-fallback.svg';
 
@@ -9,23 +10,21 @@ const teams = [
     name: 'Federal Force',
     number: 'FRC 10466',
     instagram: 'https://www.instagram.com/frc10466/',
-    handle: '@frc10466',
     photo:
       'https://www.sistemafibra.org.br/senai/images/categorias/noticias/2026/02-fevereiro/23-1-2026_Equipes_FRC_-_Foto_Bruno_Frauzino-2816_Federal_Force.jpg',
     photoCredit: 'Bruno Frauzino / Sistema Fibra',
     description:
-      'Equipe de robótica do SENAI que participa da FIRST Robotics Competition, unindo engenharia, programação, estratégia e trabalho em equipe.',
+      'A Federal Force representa o Sesi Taguatinga, de Taguatinga (DF), estreou em 2025 e participou do FIRST Championship.',
   },
   {
     name: "Robot's District",
     number: 'FRC 9484',
     instagram: 'https://www.instagram.com/frc9484/',
-    handle: '@frc9484',
     photo:
       'https://www.sistemafibra.org.br/senai/images/categorias/noticias/2026/02-fevereiro/23-1-2026_Equipes_FRC_-_Foto_Bruno_Frauzino-2827_ROBOTS_DISTRICT.jpg',
     photoCredit: 'Bruno Frauzino / Sistema Fibra',
     description:
-      'Equipe de robótica do SENAI voltada aos desafios da FIRST Robotics Competition e ao desenvolvimento de soluções técnicas em equipe.',
+      'A Robot’s District representa o SESI SENAI Taguatinga, de Taguatinga (DF), estreou em 2024 e participou do FIRST Championship.',
   },
 ];
 
@@ -38,6 +37,8 @@ const useFallbackImage = (event: React.SyntheticEvent<HTMLImageElement>) => {
 };
 
 export const Teams: React.FC = () => {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="equipes" className="relative overflow-hidden bg-slate-950 py-20 sm:py-24">
       <div className="pointer-events-none absolute -right-32 top-20 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
@@ -53,19 +54,23 @@ export const Teams: React.FC = () => {
             Conheça quem transforma projeto em competição
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg">
-            Federal Force e Robot's District representam o SENAI no universo da FIRST Robotics Competition.
+            Federal Force 10466 e Robot&apos;s District 9484 representam Taguatinga, Distrito Federal, na FIRST Robotics Competition.
           </p>
         </div>
 
         <div className="mt-12 grid gap-7 md:grid-cols-2">
           {teams.map((team, index) => (
-            <motion.article
+            <motion.a
               key={team.name}
-              initial={{ opacity: 0, y: 24 }}
+              href={team.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Abrir Instagram da equipe ${team.name}`}
+              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="group overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70 shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-500/30 hover:shadow-blue-950/20"
+              transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : index * 0.08 }}
+              className={`group block overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70 shadow-xl shadow-black/10 transition-[border-color,box-shadow,transform] duration-300 hover:border-blue-500/40 hover:shadow-blue-950/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${reduceMotion ? '' : 'hover:-translate-y-1.5'}`}
             >
               <div className="relative aspect-[16/10] overflow-hidden border-b border-slate-800 bg-slate-900">
                 <img
@@ -75,7 +80,7 @@ export const Teams: React.FC = () => {
                   decoding="async"
                   referrerPolicy="no-referrer"
                   onError={useFallbackImage}
-                  className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.025]"
+                  className={`absolute inset-0 h-full w-full object-cover object-center ${reduceMotion ? '' : 'transition-transform duration-700 group-hover:scale-[1.025]'}`}
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
@@ -91,30 +96,21 @@ export const Teams: React.FC = () => {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="text-2xl font-extrabold tracking-tight text-white">{team.name}</h3>
-                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-blue-400">Equipe SENAI</p>
+                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-blue-400">FIRST Robotics Competition</p>
                   </div>
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-pink-500/20 bg-pink-500/10 text-pink-300">
-                    <Instagram className="h-5 w-5" aria-hidden="true" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-gradient-to-br from-violet-600 via-pink-500 to-amber-400 text-white shadow-lg shadow-pink-950/30">
+                    <Instagram className="h-6 w-6" strokeWidth={2.2} aria-hidden="true" />
                   </div>
                 </div>
 
                 <p className="mt-5 text-sm leading-6 text-slate-400 sm:text-base">{team.description}</p>
 
-                <a
-                  href={team.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-7 inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm font-bold text-white transition-all hover:border-pink-500/40 hover:bg-slate-900"
-                  aria-label={`Abrir Instagram da equipe ${team.name}`}
-                >
-                  <Instagram className="h-4 w-4" aria-hidden="true" />
-                  {team.handle}
-                  <ArrowUpRight className="h-4 w-4 text-slate-400" aria-hidden="true" />
-                </a>
               </div>
-            </motion.article>
+            </motion.a>
           ))}
         </div>
+
+        <SponsorContact />
       </div>
     </section>
   );
